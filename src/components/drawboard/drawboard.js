@@ -106,6 +106,17 @@ export default class {
             throw new Error('[drawboard] canvas element not found!');
         }
         this.canvas = options.canvas;
+        fabric.Object.prototype.set({
+            cornerColor: 'rgba(102,153,255,0.5)',
+            selectable: true,
+            transparentCorners: false,
+            cornerStrokeColor:'green',
+            borderColor:'green',
+            cornerSize:12,
+            padding:5,
+            cornerStyle:'circle',
+            borderDashArray:[3, 3]
+        });
         this.fCanvas = new fabric.Canvas(this.canvas, {
             selection: false,
             skipTargetFind: true,
@@ -418,6 +429,7 @@ export default class {
         const box = this.draw_text(options);
 
         this.fCanvas.add(box);
+        this.getSelectObject();
         if (state) {
             this.save_state();
         }
@@ -527,10 +539,14 @@ export default class {
             this.fCanvas.add(draw_obj);
             console.log('添加組件', draw_obj)
             this.current_draw_obj = draw_obj;
-            this.current_draw_obj.on('selection:created', (e) => {
-                console.log('selection:created', e)
-            })
+            this.getSelectObject();
         }
+    }
+
+    getSelectObject() {
+        this.current_draw_obj.on('selected', (e) => {
+            console.log('selection:created', e)
+        })
     }
 
     /** 绘制方法 - mouse up */
@@ -552,6 +568,7 @@ export default class {
         if (draw_obj) {
             this.fCanvas.add(draw_obj);
             this.current_draw_obj = draw_obj;
+            this.getSelectObject();
         }
     }
 
@@ -700,6 +717,7 @@ export default class {
             if (obj) {
                 this.fCanvas.add(obj);
                 this.current_draw_obj = obj;
+                this.getSelectObject();
             }
         });
     }
