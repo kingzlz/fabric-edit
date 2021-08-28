@@ -106,7 +106,8 @@
                 // 处于移动模式
                 in_move_mode: false,
                 /** 事件 */
-                delete_event: (_) => {},
+                delete_event: (_) => {
+                },
                 /** 初始状态 */
                 init_state: {
                     is_img: false,
@@ -214,7 +215,7 @@
         mounted() {
             this.delete_event = this.delete_handler.bind(this);
             window.addEventListener('keyup', this.delete_event);
-            this.init_drawboard()
+            this.init_drawboard();
         },
         destroyed() {
             window.removeEventListener('keyup', this.delete_event);
@@ -376,7 +377,6 @@
             delete_handler(ev) {
                 ev.preventDefault();
                 ev.stopPropagation();
-
                 // DEL 删除按钮
                 if (ev.keyCode !== 46) {
                     return;
@@ -694,51 +694,63 @@
         color: #66b1ff;
         font-size: 12px;
     }
+
     .module_draw_dialog .draw_wrapper {
         width: 100%;
         overflow-y: auto;
-        background: rgba(0,0,0,0.1);
+        background: rgba(0, 0, 0, 0.1);
     }
+
     .module_draw_dialog .dialog_body {
         position: relative;
     }
+
     .module_draw_dialog .dialog_body .picker_item {
         position: relative;
     }
+
     .module_draw_dialog .dialog_body .picker_item .picker_title {
         vertical-align: middle;
         color: #595959;
         margin-right: 4px;
     }
+
     .module_draw_dialog .dialog_body .picker_item .el-color-picker {
         vertical-align: middle;
     }
+
     .module_draw_dialog .dialog_body .picker_item .el-color-picker__trigger {
         border: none;
         width: 70px;
     }
+
     .module_draw_dialog .dialog_body .picker_item .el-color-picker__color {
         width: 64px;
     }
+
     .module_draw_dialog .dialog_body .picker_item .el-color-picker__icon {
         left: 55px;
     }
+
     .module_draw_dialog .dialog_body .picker_item .picker_input {
         width: 64px;
         height: 24px;
         margin-left: 4px;
     }
+
     .module_draw_dialog .dialog_body .picker_item .picker_input .el-input-group__append {
         padding: 0 4px;
         color: #333;
         background-color: #ebebeb;
     }
+
     .module_draw_dialog .dialog_body .picker_item .picker_input input {
         height: 24px;
         line-height: 20px;
         padding: 4px;
         border: 1px solid #ccc;
     }
+
     .module_draw_dialog .dialog_body .picker_item .picker_slider {
         position: absolute;
         top: 24px;
@@ -747,38 +759,47 @@
         padding: 0 14px;
         background-color: #ebebeb;
     }
+
     .module_draw_dialog .dialog_body .picker_item .picker_slider .el-slider {
         width: 112px;
     }
+
     .module_draw_dialog .dialog_body .picker_item .picker_slider .el-slider .el-slider__bar {
         background-color: #595959;
     }
+
     .module_draw_dialog .dialog_body .picker_item .picker_slider .el-slider .el-slider__button-wrapper .el-tooltip {
         border-color: #595959;
     }
+
     .module_draw_dialog .dialog_body .picker_item .picker_slider .el-slider .el-slider__runway {
         background-color: #ccc;
     }
+
     .module_draw_dialog .dialog_body .color_picker {
         position: absolute;
         top: 2px;
         right: 16px;
     }
+
     .module_draw_dialog .dialog_body .size_picker {
         position: absolute;
         top: 40px;
         right: 18px;
     }
+
     .module_draw_dialog .dialog_body .move_btn {
         position: absolute;
         bottom: 150px;
         right: 20px;
     }
+
     .module_draw_dialog .dialog_body .delete_btn {
         position: absolute;
         bottom: 110px;
         right: 20px;
     }
+
     .module_draw_dialog .dialog_body .zoom_text {
         position: absolute;
         bottom: 237px;
@@ -789,6 +810,7 @@
         -ms-user-select: none;
         user-select: none;
     }
+
     .module_draw_dialog .dialog_body .zoom_in_btn,
     .module_draw_dialog .dialog_body .zoom_out_btn {
         position: absolute;
@@ -798,20 +820,24 @@
         color: #66b1ff;
         cursor: pointer;
     }
+
     .module_draw_dialog .dialog_body .zoom_in_btn:hover,
     .module_draw_dialog .dialog_body .zoom_out_btn:hover {
         opacity: 0.5;
     }
+
     .module_draw_dialog .dialog_body .zoom_out_btn {
         position: absolute;
         bottom: 200px;
         right: 20px;
     }
+
     .module_draw_dialog .draw_control {
         height: 90px;
         width: 100%;
         background-color: #66b1ff;
     }
+
     .module_draw_dialog .draw_control:after {
         display: block;
         content: ".";
@@ -820,6 +846,7 @@
         clear: both;
         visibility: hidden;
     }
+
     .module_draw_dialog .draw_control_item {
         height: 100%;
         float: left;
@@ -829,20 +856,25 @@
         cursor: pointer;
         background-color: transparent;
     }
+
     .module_draw_dialog .draw_control_item img {
         display: block;
         margin: 0 auto;
     }
+
     .module_draw_dialog .draw_control_item:hover,
     .module_draw_dialog .draw_control_item.active {
-        background-color: rgba(40,134,231,0.502);
+        background-color: rgba(40, 134, 231, 0.502);
     }
+
     .draw_rotate_dialog .el-dialog__header {
         padding: 20px 20px 10px 20px;
     }
+
     .draw_rotate_dialog .el-dialog__body {
         padding: 20px 20px;
     }
+
     .draw_rotate_dialog .draw_rotate_text {
         position: relative;
         padding-left: 50px;
@@ -850,6 +882,7 @@
         line-height: 20px;
         font-size: 16px;
     }
+
     .draw_rotate_dialog .draw_rotate_text .el-icon-warning {
         position: absolute;
         top: 9px;
@@ -857,6 +890,7 @@
         color: #faad14;
         font-size: 22px;
     }
+
     .draw_rotate_dialog .draw_rotate_checkbox {
         padding-left: 10px;
     }

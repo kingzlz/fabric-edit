@@ -149,7 +149,7 @@ export default class {
      */
     destroyed() {
         this.clear();
-        this.fCanvas.dispose();
+        this.fCanvas && this.fCanvas.dispose();
     }
 
     /**
@@ -525,7 +525,11 @@ export default class {
 
         if (draw_obj) {
             this.fCanvas.add(draw_obj);
+            console.log('添加組件', draw_obj)
             this.current_draw_obj = draw_obj;
+            this.current_draw_obj.on('selection:created', (e) => {
+                console.log('selection:created', e)
+            })
         }
     }
 
